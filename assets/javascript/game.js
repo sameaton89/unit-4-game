@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var characters = {
         "WALLY": {
             name: "WALLY",
@@ -29,6 +30,7 @@ $(document).ready(function () {
             enemyAttackBack: 25
         }
     };
+
     var currSelChar;
     var combatants = [];
     var currDefender;
@@ -42,6 +44,7 @@ $(document).ready(function () {
         var charHealth = $("<div class='character-health'>").text(character.health);
         charDiv.append(charName).append(charImage).append(charHealth);
         $(renderArea).append(charDiv);
+
         if (charStatus === "enemy") {
             $(charDiv).addClass("enemy");
         }
@@ -49,10 +52,10 @@ $(document).ready(function () {
             currDefender = character;
             $(charDiv).addClass("target-enemy");
         }
-    }
+    };
 
     var renderMessage = function(message) {
-        var gameMessageSet = $("#game-message");
+        var gameMessageSet = $("#message");
         var newMessage = $("<div>").text(message);
         gameMessageSet.append(newMessage);
         
@@ -74,19 +77,23 @@ $(document).ready(function () {
         if (areaRender === "#your-character") {
             renderOne(charObj, areaRender, "");
         }
+
         if (areaRender === "#enemies") {
             for (var i = 0; i < charObj.length; i++) {
                 renderOne(charObj[i], areaRender, "enemy");
             }
-            $(document).on("click", ".enemy", function(){
+        }
+         $(document).on("click", ".enemy", function() {
                 var name = ($(this).attr("data-name"));
-                if($("#defender").children().length === 0) {
-                    renderCharacters(name, "#defender")
-                    $(this).hide()
+                
+                if ($("#defender").children().length === 0) {
+                    renderCharacters(name, "#defender");
+                    $(this).hide();
                     renderMessage("clearMessage");
                 }
             });
-        }
+        
+
         if (areaRender === "#defender") {
             $(areaRender).empty();
             for (var i = 0; i < combatants.length; i++) {
@@ -95,18 +102,20 @@ $(document).ready(function () {
                 }
             }
         }
+
         if (areaRender === "playerDamage") {
             $("#defender").empty();
-            renderOne(charObj, "#defender", "defender")
+            renderOne(charObj, "#defender", "defender");
         }
-        if (areaRender === "enemyDamage") 
-        renderCharacters(characters, "#character-section"); {
+
+        if (areaRender === "enemyDamage") {
             $("#your-character").empty();
-            renderOne(charObj, "your-character", "");
+            renderOne(charObj, "#your-character", "");
         }
+
         if (areaRender === "enemyDefeated") {
             $("#defender").empty();
-            var gameStateMessage = "You have defeated " + charObj.name + " in a battle of wit, erudition, and ripostes. You can choose to disputate informally with another conversant."
+            var gameStateMessage = "You have defeated " + charObj.name + " in a battle of wit, erudition, and ripostes. You can choose to disputate informally with another conversant.";
             renderMessage(gameStateMessage);
         }
     }
@@ -115,27 +124,31 @@ $(document).ready(function () {
         var restart = $("<button>Return with l'escalier d'esprit</button>").click(function() {
             location.reload();
         });
+
         var gameState = $("<div>").text(inputEndGame);
 
         $("body").append(gameState);
         $("body").append(restart);
     }
       
+    renderCharacters(characters, "#character-section");
 
     $(document).on("click", ".character", function () {
         var name = $(this).attr("data-name");
-        console.log(typeof name);
+         //console.log(typeof name);
         
-        console.log(name);
+        //console.log(name);
+
         if (!currSelChar) {
             currSelChar = characters[name];
-            console.log(currSelChar);
+           // console.log(currSelChar);
 
             for (var key in characters) {
                 if (key !== name) {
                     combatants.push(characters[key]);
                 }
             }
+
             $("#character-section").hide();
             
             renderCharacters(currSelChar, "#your-character");
@@ -145,13 +158,15 @@ $(document).ready(function () {
 
     $("#attack").on("click", function() {
 
-        if($("#defender").children().length !== 0) {
+        if ($("#defender").children().length !== 0) {
             var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " ego damage.";
             varcounterAttackMessage = currDefender.name + " vollied a witticism at you for " + currDefender.enemyAttackBack + "damage.";
             renderMessage("clearMessage");
 
             currDefender.health -= (currSelChar.attack * turnCounter);
-            if(currDefender.health > 0) {
+            
+            if (currDefender.health > 0) {
+
                 renderCharacters(currDefender, "playerDamage");
 
                 renderMessage(attackMessage);
@@ -159,7 +174,15 @@ $(document).ready(function () {
 
                 currSelChar.health -= currDefender.enemyAttackBack;
                 renderCharacters(currSelChar, "enemyDamage");
+            
+
+            if (currSelChar.health <= 0) {
+                renderMessage("clearMessage")
+                restartGame("You're not as smart as you think.");
+                $("#attack").unbind("click");
             }
+        }
+        
             else {
                 renderCharacters(currDefender, "enemyDefeated");
                 killCount++;
@@ -172,5 +195,4 @@ $(document).ready(function () {
         }
         turnCounter++;
     });
-
-});
+ });

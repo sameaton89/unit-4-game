@@ -8,7 +8,7 @@ img {
     padding: 0px;
 }
 
-.character {
+#character-section {
     background-color: white;
     display: inline-block;
     padding: 30px;
@@ -45,7 +45,7 @@ img {
 #main-game {
     background-color: white;
     margin: 30px;
-    width: 1000px;
+    width: 75%;
 
 }
 
