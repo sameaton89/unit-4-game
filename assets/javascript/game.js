@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     var renderMessage = function(message) {
         var gameMessageSet = $("#message");
-        var newMessage = $("<div>").text(message);
+        var newMessage = $("<div id='new-message'>").text(message);
         gameMessageSet.append(newMessage);
         
         if (message === "clearMessage") {
