@@ -127,8 +127,8 @@ $(document).ready(function () {
 
         var gameState = $("<div>").text(inputEndGame);
 
-        $("body").append(gameState);
-        $("body").append(restart);
+        $("#message").append(gameState);
+        $("#message").append(restart);
     }
       
     renderCharacters(characters, "#character-section");
@@ -159,8 +159,8 @@ $(document).ready(function () {
     $("#attack").on("click", function() {
 
         if ($("#defender").children().length !== 0) {
-            var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " ego damage.";
-            varcounterAttackMessage = currDefender.name + " vollied a witticism at you for " + currDefender.enemyAttackBack + "damage.";
+            var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " pangs of ego damage.";
+            varcounterAttackMessage = currDefender.name + " vollied a bon mot at you for " + currDefender.enemyAttackBack + "damage.";
             renderMessage("clearMessage");
 
             currDefender.health -= (currSelChar.attack * turnCounter);

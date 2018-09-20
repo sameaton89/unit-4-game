@@ -63,3 +63,8 @@ img {
     font-style: italic;
     cursor: pointer;
 }
+
+.characters {
+    width: 75%;
+    display: inline-block;
+}
