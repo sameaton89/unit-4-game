@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("../images/train3.jpeg");
@@ -7,8 +8,7 @@ img {
  
     padding: 0px;
 }
-
-#character-section {
+ .character {
     background-color: white;
     display: inline-block;
     padding: 30px;
@@ -18,21 +18,18 @@ img {
     font-style: italic;
     cursor: pointer;
 }
-
-.character-image {
+ .character-image {
     padding-right: 16px;
     padding-left: 16px;
     margin-top: 3px;
     margin-bottom: 3px;
 }
-
-.title {
+ .title {
     font-size: 20px;
     font-weight: bold;
     padding: 30px;
 }
-
-#logo {
+ #logo {
     font-size: 50px;
     font-weight: bold;
     padding: 30px; 
@@ -41,19 +38,16 @@ img {
     padding-top: 5px;
     width: 100%;
 }
-
-#main-game {
+ #main-game {
     background-color: white;
     margin: 30px;
-    width: 75%;
-
-}
-
-#attack {
+    width: 1000px;
+ }
+ #attack {
     margin-left: 30px;
-}
+ }
 
-#new-message {
+#message {
     background-color: white;
     display: inline-block;
     padding: 30px;
@@ -62,9 +56,4 @@ img {
     font-weight: bold;
     font-style: italic;
     cursor: pointer;
-}
-
-.characters {
-    width: 75%;
-    display: inline-block;
 }
