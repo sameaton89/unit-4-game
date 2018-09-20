@@ -160,7 +160,7 @@ $(document).ready(function () {
 
         if ($("#defender").children().length !== 0) {
             var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " pangs of ego damage.";
-            varcounterAttackMessage = currDefender.name + " vollied a bon mot at you for " + currDefender.enemyAttackBack + "damage.";
+            var counterAttackMessage = currDefender.name + " vollied a bon mot at you for " + currDefender.enemyAttackBack + " points of damage to the integrity of your self-conception.";
             renderMessage("clearMessage");
 
             currDefender.health -= (currSelChar.attack * turnCounter);
