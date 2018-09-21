@@ -121,7 +121,7 @@ $(document).ready(function () {
     }
     
     var restartGame = function(inputEndGame) {
-        var restart = $("<button>Return with l'escalier d'esprit</button>").click(function() {
+        var restart = $("<button>Return with l'esprit de l'escalier</button>").click(function() {
             location.reload();
         });
 
