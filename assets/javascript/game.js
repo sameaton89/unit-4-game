@@ -159,7 +159,7 @@ $(document).ready(function () {
     $("#attack").on("click", function() {
 
         if ($("#defender").children().length !== 0) {
-            var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " pangs of ego damage.";
+            var attackMessage = "You attacked " + currDefender.name + " for " + (currSelChar.attack * turnCounter) + " degrees of existential angst.";
             var counterAttackMessage = currDefender.name + " vollied a bon mot at you for " + currDefender.enemyAttackBack + " newly induced neuroses.";
             renderMessage("clearMessage");
 
